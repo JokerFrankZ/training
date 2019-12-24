@@ -1,0 +1,4 @@
+{
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
+// 异步懒加载路由，需要配置
