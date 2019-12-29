@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <van-panel
-      :title="info.name"
+      :title="info.company"
       v-for="(info, index) in infoList"
       :key="index"
     >
@@ -32,8 +32,8 @@
     <van-cell-group>
       <van-cell>
         <van-row type="flex" justify="center">
-          <van-button type="primary" @click="goTo('/servicesInfoAdd')">
-            添加服务
+          <van-button type="primary" @click="goTo('/contactInfo')">
+            添加联系人
           </van-button>
         </van-row>
       </van-cell>
@@ -56,13 +56,13 @@ export default {
   data: function() {
     return {
       infoList: '',
-      titleList: ['服务类型', '服务日期', '服务成本', '时间成本', '联系人'],
+      titleList: ['联系人', '性别', '个人电话', '工作电话', '邮箱'],
       infoText: [],
       index: ''
     }
   },
   created() {
-    getData('mock/servicesManage.json').then(res => {
+    getData('mock/contactInfoManage.json').then(res => {
       this.infoList = res.data
     })
   },
@@ -73,19 +73,19 @@ export default {
       for (let i in this.titleList) {
         switch (i) {
           case '0':
-            this.infoText[i] = this.infoList[this.index].sType
+            this.infoText[i] = this.infoList[this.index].name
             break
           case '1':
-            this.infoText[i] = this.infoList[this.index].sTime
+            this.infoText[i] = this.infoList[this.index].sex
             break
           case '2':
-            this.infoText[i] = this.infoList[this.index].sCost + '元'
+            this.infoText[i] = this.infoList[this.index].tel
             break
           case '3':
-            this.infoText[i] = this.infoList[this.index].sTimeCost + '小时'
+            this.infoText[i] = this.infoList[this.index].workTel
             break
           case '4':
-            this.infoText[i] = this.infoList[this.index].contacter
+            this.infoText[i] = this.infoList[this.index].email
             break
         }
       }

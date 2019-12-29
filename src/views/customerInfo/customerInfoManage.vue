@@ -32,8 +32,8 @@
     <van-cell-group>
       <van-cell>
         <van-row type="flex" justify="center">
-          <van-button type="primary" @click="goTo('/servicesInfoAdd')">
-            添加服务
+          <van-button type="primary" @click="goTo('/customerInfo')">
+            添加客户
           </van-button>
         </van-row>
       </van-cell>
@@ -52,17 +52,24 @@ Vue.use(Cell)
   .use(Row)
   .use(Col)
 export default {
-  name: 'contactInfoManage',
+  name: 'customerInfoManage',
   data: function() {
     return {
       infoList: '',
-      titleList: ['服务类型', '服务日期', '服务成本', '时间成本', '联系人'],
+      titleList: [
+        '客户类型',
+        '行业类型',
+        '企业性质',
+        '城市',
+        '客户电话',
+        '客户邮箱'
+      ],
       infoText: [],
       index: ''
     }
   },
   created() {
-    getData('mock/servicesManage.json').then(res => {
+    getData('mock/customerInfoManage.json').then(res => {
       this.infoList = res.data
     })
   },
@@ -73,19 +80,22 @@ export default {
       for (let i in this.titleList) {
         switch (i) {
           case '0':
-            this.infoText[i] = this.infoList[this.index].sType
+            this.infoText[i] = this.infoList[this.index].customerType
             break
           case '1':
-            this.infoText[i] = this.infoList[this.index].sTime
+            this.infoText[i] = this.infoList[this.index].companyType
             break
           case '2':
-            this.infoText[i] = this.infoList[this.index].sCost + '元'
+            this.infoText[i] = this.infoList[this.index].companyNature
             break
           case '3':
-            this.infoText[i] = this.infoList[this.index].sTimeCost + '小时'
+            this.infoText[i] = this.infoList[this.index].city
             break
           case '4':
-            this.infoText[i] = this.infoList[this.index].contacter
+            this.infoText[i] = this.infoList[this.index].tel
+            break
+          case '5':
+            this.infoText[i] = this.infoList[this.index].email
             break
         }
       }

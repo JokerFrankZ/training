@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     isActive() {
-      return this.$route.path === this.path
+      return !this.$route.path.indexOf(this.path)
     },
     iSstyle() {
       return { active: this.isActive }
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~@/assets/css/color'
+@import '~@/assets/css/index'
 div
   width 100%
   height 100%
@@ -62,10 +62,10 @@ div
     color #fff
     font-size 12px
 .active
-  background #ffc0cb
+  background $activeBgColor
   .item-text
-    color #25aef3
+    color $headerColor
   .item-svg
     .icon
-      fill #25aef3
+      fill $headerColor
 </style>

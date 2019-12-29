@@ -5,23 +5,47 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import('@/views/customerInfo/customerInfo'),
+    component: () => import('@/views/customerInfo/customerInfoManage'),
     meta: {
       title: '客户关系管理信息系统'
     }
   },
+
   {
     path: '/customerInfo',
     component: () => import('@/views/customerInfo/customerInfo'),
     meta: {
+      title: '客户信息添加'
+    }
+  },
+  {
+    path: '/customerInfoManage',
+    component: () => import('@/views/customerInfo/customerInfoManage'),
+    meta: {
       title: '客户信息管理'
+    }
+  },
+
+  {
+    path: '/contactInfoManage',
+    component: () => import('@/views/contactInfo/contactInfoManage'),
+    meta: {
+      title: '联系人信息管理'
     }
   },
   {
     path: '/contactInfo',
     component: () => import('@/views/contactInfo/contactInfo'),
     meta: {
-      title: '联系人信息管理'
+      title: '联系人信息添加'
+    }
+  },
+
+  {
+    path: '/servicesInfoAdd',
+    component: () => import('@/views/servicesManage/servicesInfoAdd'),
+    meta: {
+      title: '客户服务添加'
     }
   },
   {
@@ -31,6 +55,7 @@ const routes = [
       title: '客户服务管理'
     }
   },
+
   {
     path: '/customerServices',
     component: () => import('@/views/customerServices/customerServices'),

@@ -27,8 +27,12 @@ export default {
   data: function() {
     return {
       list: [
-        { text: '客户管理', svg: '#iconkehu', path: '/customerInfo' },
-        { text: '联系人管理', svg: '#iconlianxiren', path: '/contactInfo' },
+        { text: '客户管理', svg: '#iconkehu', path: '/customerInfoManage' },
+        {
+          text: '联系人管理',
+          svg: '#iconlianxiren',
+          path: '/contactInfoManage'
+        },
         { text: '客户服务', svg: '#iconfuwu', path: '/servicesManage' },
         { text: '客户关怀', svg: '#iconsgh', path: '/customerServices' },
         { text: '综合查询', svg: '#iconzonghechaxun1', path: '/generalQuery' }

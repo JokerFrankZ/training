@@ -24,6 +24,7 @@
           v-model="value.name"
           label="客户名称"
           placeholder="请输入客户名称"
+          required
         />
       </van-cell>
       <van-cell>
@@ -41,7 +42,12 @@
         />
       </van-cell>
       <van-cell>
-        <van-field v-model="value.tel" label="电话" placeholder="请输入电话" />
+        <van-field
+          v-model="value.tel"
+          label="电话"
+          placeholder="请输入电话"
+          required
+        />
       </van-cell>
       <van-cell>
         <van-field v-model="value.fax" label="传真" placeholder="请输入传真" />
@@ -58,6 +64,7 @@
           v-model="value.email"
           label="电子邮件"
           placeholder="请输入电子邮件"
+          required
         />
       </van-cell>
       <van-cell>
@@ -75,6 +82,7 @@
           :value="value.city"
           placeholder="选择城市"
           @click="showPicker = true"
+          required
         />
 
         <van-popup v-model="showPicker" position="bottom">
@@ -107,7 +115,7 @@
           <van-radio name="电视">电视</van-radio>
         </van-radio-group>
       </van-cell>
-      <van-cell title="客户类型" center>
+      <van-cell title="客户类型" center required>
         <van-radio-group v-model="value.customerType">
           <van-radio name="潜在用户">潜在用户</van-radio>
           <van-radio name="非潜在用户">非潜在用户</van-radio>
@@ -122,14 +130,14 @@
       </van-cell>
     </van-cell-group>
     <van-cell-group title="企业概况">
-      <van-cell title="行业类型" center>
+      <van-cell title="行业类型" center required>
         <van-radio-group v-model="value.companyType">
           <van-radio name="IT互联网">IT互联网</van-radio>
           <van-radio name="建筑行业">建筑行业</van-radio>
           <van-radio name="其他的">其他的</van-radio>
         </van-radio-group>
       </van-cell>
-      <van-cell title="企业性质" center>
+      <van-cell title="企业性质" center required>
         <van-radio-group v-model="value.companyNature">
           <van-radio name="国有企业">国有企业</van-radio>
           <van-radio name="民营企业">民营企业</van-radio>
@@ -164,7 +172,9 @@
             <van-button type="primary" @click="submitForm">确定</van-button>
           </van-col>
           <van-col :span="8" :offset="2">
-            <van-button type="danger">取消</van-button>
+            <van-button type="danger" @click="goTo('/customerInfoManage')"
+              >取消</van-button
+            >
           </van-col>
         </van-row>
       </van-cell>
@@ -188,6 +198,7 @@ import {
   Col,
   Toast
 } from 'vant'
+
 Vue.use(Field)
   .use(Cell)
   .use(CellGroup)
@@ -200,6 +211,7 @@ Vue.use(Field)
   .use(Row)
   .use(Col)
   .use(Toast)
+Toast.setDefaultOptions({ duration: 500 })
 export default {
   name: 'customerInfo',
   data: function() {
@@ -273,9 +285,11 @@ export default {
     submitForm() {
       Toast.success('提交成功')
       setTimeout(() => {
-        console.log(this.value)
-      }, 100)
-      // this.$router.go(0)
+        this.goTo('/customerInfoManage')
+      }, 500)
+    },
+    goTo(url) {
+      this.$router.push(url)
     }
   }
 }
