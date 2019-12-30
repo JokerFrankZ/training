@@ -6,13 +6,53 @@
       :key="index"
     >
       <van-cell-group>
-        <van-cell v-for="(title, i) in titleList" :key="i">
+        <van-cell>
           <van-row>
-            <van-col :span="6">{{ title }}</van-col>
+            <van-col :span="6">服务类型</van-col>
             <van-col
               :span="18"
               class="van-ellipsis"
-              v-text="infoText[i]"
+              v-text="info.sType"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">服务日期</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.sTime"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">服务成本</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="`${info.sCost}元`"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">时间成本</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="`${info.sTimeCost}小时`"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">联系人</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.contacter"
             ></van-col>
           </van-row>
         </van-cell>
@@ -55,41 +95,13 @@ export default {
   name: 'contactInfoManage',
   data: function() {
     return {
-      infoList: '',
-      titleList: ['服务类型', '服务日期', '服务成本', '时间成本', '联系人'],
-      infoText: [],
-      index: ''
+      infoList: ''
     }
   },
   created() {
     getData('mock/servicesManage.json').then(res => {
       this.infoList = res.data
     })
-  },
-  watch: {
-    infoList() {
-      for (this.index in this.infoList) {
-      }
-      for (let i in this.titleList) {
-        switch (i) {
-          case '0':
-            this.infoText[i] = this.infoList[this.index].sType
-            break
-          case '1':
-            this.infoText[i] = this.infoList[this.index].sTime
-            break
-          case '2':
-            this.infoText[i] = this.infoList[this.index].sCost + '元'
-            break
-          case '3':
-            this.infoText[i] = this.infoList[this.index].sTimeCost + '小时'
-            break
-          case '4':
-            this.infoText[i] = this.infoList[this.index].contacter
-            break
-        }
-      }
-    }
   },
   methods: {
     goTo(url) {

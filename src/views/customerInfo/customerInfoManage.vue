@@ -6,13 +6,63 @@
       :key="index"
     >
       <van-cell-group>
-        <van-cell v-for="(title, i) in titleList" :key="i">
+        <van-cell>
           <van-row>
-            <van-col :span="6">{{ title }}</van-col>
+            <van-col :span="6">客户类型</van-col>
             <van-col
               :span="18"
               class="van-ellipsis"
-              v-text="infoText[i]"
+              v-text="info.customerType"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">行业类型</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.companyType"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">企业性质</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.companyNature"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">城市</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.city"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">客户电话</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.tel"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">客户邮箱</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.email"
             ></van-col>
           </van-row>
         </van-cell>
@@ -55,51 +105,13 @@ export default {
   name: 'customerInfoManage',
   data: function() {
     return {
-      infoList: '',
-      titleList: [
-        '客户类型',
-        '行业类型',
-        '企业性质',
-        '城市',
-        '客户电话',
-        '客户邮箱'
-      ],
-      infoText: [],
-      index: ''
+      infoList: ''
     }
   },
   created() {
     getData('mock/customerInfoManage.json').then(res => {
       this.infoList = res.data
     })
-  },
-  watch: {
-    infoList() {
-      for (this.index in this.infoList) {
-      }
-      for (let i in this.titleList) {
-        switch (i) {
-          case '0':
-            this.infoText[i] = this.infoList[this.index].customerType
-            break
-          case '1':
-            this.infoText[i] = this.infoList[this.index].companyType
-            break
-          case '2':
-            this.infoText[i] = this.infoList[this.index].companyNature
-            break
-          case '3':
-            this.infoText[i] = this.infoList[this.index].city
-            break
-          case '4':
-            this.infoText[i] = this.infoList[this.index].tel
-            break
-          case '5':
-            this.infoText[i] = this.infoList[this.index].email
-            break
-        }
-      }
-    }
   },
   methods: {
     goTo(url) {

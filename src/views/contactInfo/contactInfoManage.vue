@@ -6,13 +6,53 @@
       :key="index"
     >
       <van-cell-group>
-        <van-cell v-for="(title, i) in titleList" :key="i">
+        <van-cell>
           <van-row>
-            <van-col :span="6">{{ title }}</van-col>
+            <van-col :span="6">联系人</van-col>
             <van-col
               :span="18"
               class="van-ellipsis"
-              v-text="infoText[i]"
+              v-text="info.name"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">性别</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.sex"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">个人电话</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.tel"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">工作电话</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.workTel"
+            ></van-col>
+          </van-row>
+        </van-cell>
+        <van-cell>
+          <van-row>
+            <van-col :span="6">邮箱</van-col>
+            <van-col
+              :span="18"
+              class="van-ellipsis"
+              v-text="info.email"
             ></van-col>
           </van-row>
         </van-cell>
@@ -55,41 +95,13 @@ export default {
   name: 'contactInfoManage',
   data: function() {
     return {
-      infoList: '',
-      titleList: ['联系人', '性别', '个人电话', '工作电话', '邮箱'],
-      infoText: [],
-      index: ''
+      infoList: ''
     }
   },
   created() {
     getData('mock/contactInfoManage.json').then(res => {
       this.infoList = res.data
     })
-  },
-  watch: {
-    infoList() {
-      for (this.index in this.infoList) {
-      }
-      for (let i in this.titleList) {
-        switch (i) {
-          case '0':
-            this.infoText[i] = this.infoList[this.index].name
-            break
-          case '1':
-            this.infoText[i] = this.infoList[this.index].sex
-            break
-          case '2':
-            this.infoText[i] = this.infoList[this.index].tel
-            break
-          case '3':
-            this.infoText[i] = this.infoList[this.index].workTel
-            break
-          case '4':
-            this.infoText[i] = this.infoList[this.index].email
-            break
-        }
-      }
-    }
   },
   methods: {
     goTo(url) {

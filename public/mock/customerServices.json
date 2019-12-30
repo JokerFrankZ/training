@@ -1,0 +1,16 @@
+[
+  {
+    "company": "水利局",
+    "contacter": "张三",
+    "sex": "男",
+    "tel": "11011",
+    "email": "11011@qq.com"
+  },
+  {
+    "company": "公安局",
+    "contacter": "李四",
+    "sex": "女",
+    "tel": "11012",
+    "email": "11012@qq.com"
+  }
+]

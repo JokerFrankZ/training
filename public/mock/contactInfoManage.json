@@ -8,5 +8,15 @@
     "tel": "10110001",
     "email": "aaa@qq.com",
     "remarks": "无"
+  },
+  {
+    "company": "公安局",
+    "name": "李四",
+    "post": "警务员",
+    "sex": "男",
+    "workTel": "1100110",
+    "tel": "10110001",
+    "email": "aaa@qq.com",
+    "remarks": "无"
   }
 ]
