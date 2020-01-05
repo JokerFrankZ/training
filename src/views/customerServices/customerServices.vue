@@ -96,6 +96,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import '~@/assets/css/index'
+
 .content
   width 100%
   position absolute
@@ -103,7 +105,7 @@ export default {
   .van-cell__title
     span
       font-size 18px
-      color red
+      color $headerColor
       font-weight bold
   .van-row
     .van-col

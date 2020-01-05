@@ -69,6 +69,13 @@ const routes = [
     meta: {
       title: '综合查询'
     }
+  },
+  {
+    path: '/queryManage',
+    component: () => import('@/views/generalQuery/queryManage'),
+    meta: {
+      title: '查询结果'
+    }
   }
 ]
 
